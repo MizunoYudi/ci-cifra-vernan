@@ -1,0 +1,34 @@
+{
+  "name": "projeto",
+  "version": "1.0.0",
+  "description": "Integrantes: João Victor Yudi Mizuno\r Matéria: Segurança da Informação\r Orientador: Daniel Cintra Cugler\r IFSP Campus Boituva",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsx watch src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MizunoYudi/ci-cifra-vernan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MizunoYudi/ci-cifra-vernan/issues"
+  },
+  "homepage": "https://github.com/MizunoYudi/ci-cifra-vernan#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "express": "^5.3.0",
+    "swagger-jsdoc": "^6.3.0",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
