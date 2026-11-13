@@ -5,7 +5,7 @@ import apiRouter from './routes/api';
 import { swaggerConfig } from './config/swagger';
 
 const app = express();
-const PORT = 80;
+const PORT = 3000;
 app.use(express.json())
 app.use(apiRouter);
 

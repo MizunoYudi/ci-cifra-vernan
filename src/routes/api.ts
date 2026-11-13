@@ -1,6 +1,8 @@
 import express from 'express';
+import { CifraVernam } from '../service/CifraVernam'
 
 const apiRouter = express.Router();
+const cifraVernam = new CifraVernam();
 
 /**
  * @swagger
@@ -31,7 +33,8 @@ const apiRouter = express.Router();
  *         description: erro ao cifrar mensagem.
  */
 apiRouter.post('/cifrar', (req, res) => {
-    res.status(200).json({ texto: `${req.body.texto}` });
+    const mensagemCifrada: string = cifraVernam.cifrar(req.body.texto, req.body.chave);
+    res.status(200).json({ texto: `${mensagemCifrada}` });
 });
 
 /**
