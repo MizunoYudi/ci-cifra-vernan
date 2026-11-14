@@ -1,6 +1,6 @@
 export const swaggerConfig = {
     swaggerDefinition: {
-        openapi: '3.2.1',
+        openapi: '3.0.0',
         info: {
             title: 'API Cifra de Vernan',
             version: '1.0.0',

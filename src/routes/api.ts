@@ -9,7 +9,7 @@ const cifraVernam = new CifraVernam();
  * /cifrar:
  *   post:
  *     summary: Criptografa a mensagem pela cifra de Vernam.
- *     description: Criptografa a mensagem pela Cifra de Vernam, retornando em texto (Pode retornar caracteres em unicode, pois a aplicação da cifra pode retornar caracteres da tabela ASCII que não são iluistraveis).
+ *     description: Criptografa a mensagem pela Cifra de Vernam, retornando em texto binario em 8 bits.
  *     requestBody:
  *       required: true
  *       content:
@@ -41,13 +41,13 @@ const cifraVernam = new CifraVernam();
  *                   type: string
  *                   description: Mensagem criptografada.
  *             example:
- *               textoCifrado: ",\u0007\r\u0017\u0004\u0001\u0002\u0005"
+ *               textoCifrado: "0010110000000111000011010001011100000100000000010000001000000101"
  *       400:
  *         description: Erro ao cifrar mensagem.
  */
 apiRouter.post('/cifrar', (req, res) => {
     try{
-        const mensagemCifrada: string = cifraVernam.cifraVernam(req.body.textoClaro, req.body.chave);
+        const mensagemCifrada: string = cifraVernam.cifrar(req.body.textoClaro, req.body.chave);
         res.status(200).json({ textoCifrado: `${mensagemCifrada}` });
     } catch(err: any) {
         console.log(err);
@@ -60,7 +60,7 @@ apiRouter.post('/cifrar', (req, res) => {
  * /decifrar:
  *   post:
  *     summary: Descriptografa a mensagem pela cifra de Vernam.
- *     description: Descriptografa a mensagem utilizando a cifra de vernam. É possível inserir characteres em unicode que o mesmo irá descriptografar da mesma maneira.
+ *     description: Descriptografa a mensagem, em binario de 8 bits utilizando a cifra de vernam.
  *     requestBody:
  *       required: true
  *       content:
@@ -73,12 +73,12 @@ apiRouter.post('/cifrar', (req, res) => {
  *             properties:
  *               textoCifrado:
  *                 type: string
- *                 description: mensagem criptografada.
+ *                 description: mensagem criptografada em binario.
  *               chave:
  *                 type: string
  *                 description: chave.
  *             example:
- *               textoCifrado: ",\u0007\r\u0017\u0004\u0001\u0002\u0005"
+ *               textoCifrado: "0010110000000111000011010001011100000100000000010000001000000101"
  *               chave: "abcdefgh"
  *     responses:
  *       200:
@@ -98,7 +98,7 @@ apiRouter.post('/cifrar', (req, res) => {
  */
 apiRouter.post('/decifrar', (req, res) => {
     try{
-        const mensagemClara: string = cifraVernam.cifraVernam(req.body.textoCifrado, req.body.chave);
+        const mensagemClara: string = cifraVernam.decifrar(req.body.textoCifrado, req.body.chave);
         res.status(200).json({ textoClaro: `${mensagemClara}` });
     } catch(err: any) {
         console.log(err);
