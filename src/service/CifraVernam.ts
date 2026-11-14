@@ -1,12 +1,7 @@
 export class CifraVernam {
-    public cifrar(textoClaro: string, chave: string): string {
+    public cifraVernam(textoClaro: string, chave: string): string {
         this.validar(textoClaro, chave);
         return this.aplicarCifraVernam(textoClaro, chave);
-    }
-
-    public decifrar(textoCifrado: string, chave: string): string {
-        this.validar(textoCifrado, chave);
-        return "";
     }
 
     private validar(textoClaro: string, chave: string): void{
@@ -28,7 +23,6 @@ export class CifraVernam {
 
     private aplicarCifraVernam(textoClaro: string, chave: string): string {
         const textoClaroBinario: string[] = this.converterParaArrayBinario(textoClaro);
-        console.log(textoClaroBinario)
         const chaveBinario: string[] = this.converterParaArrayBinario(chave);
         const textoCifradoBinario: string[] = this.codificar(textoClaroBinario, chaveBinario);
         return this.converterParaTexto(textoCifradoBinario);
@@ -61,10 +55,7 @@ export class CifraVernam {
 
     private converterParaTexto(texto: string[]): string {
         const arrayASCII: number[] = texto.map((binario: string) => parseInt(binario, 2));
-        console.log(arrayASCII);
-        console.log(arrayASCII[0]);
-        console.log(String.fromCharCode(arrayASCII[0]).toString());
-        const textoConvertido: string= arrayASCII.map((charCode: number) => String.fromCharCode(charCode)).join("");
+        const textoConvertido: string = arrayASCII.map((charCode: number) => String.fromCharCode(charCode)).join("");
         return textoConvertido;
     }
 }
